@@ -1,0 +1,88 @@
+/* StoresPage Styles */
+.stores-page {
+    padding: 20px;
+  }
+
+  .store-card-link {
+    text-decoration: none;
+    color: inherit;
+  }  
+  
+  .stores-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .stores-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    gap: 20px;
+  }
+  
+  .store-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    transition: box-shadow 0.2s ease;
+    text-align: center;
+  }
+  
+  .store-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  
+  .store-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .store-location {
+    font-size: 13px;
+    color: #777;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+  }
+  
+  .pagination-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .pagination-btn.active,
+  .pagination-btn:hover {
+    background-color: #333;
+    color: white;
+  }
+  
+  /* Tablet */
+  @media (max-width: 768px) {
+    .stores-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+    }
+  }
+  
+  /* Desktop */
+  @media (min-width: 1080px) {
+    .stores-grid {
+      grid-template-columns: repeat(5, 1fr); /* 5 columns for larger screens */
+    }
+  }
+  

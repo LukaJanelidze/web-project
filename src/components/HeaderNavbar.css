@@ -1,0 +1,229 @@
+.header-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 998;
+}
+
+.header-homebutton {
+  display: flex;
+  width: 150px;
+  height: 55px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-homebutton-button {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  padding-top: 10px;
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar.open {
+  right: 0;
+  z-index: 1000;
+}
+
+.close-button-box {
+  width: 90%;
+  display: flex;
+  justify-content: right;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: red;
+  font-weight: 900;
+  border-radius: 100%;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  display: block;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.nav-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 10px;
+}
+
+.signinsignup-button-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #4caf4f3f;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* Add this near the bottom or logically near .menu-button */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button:hover {
+  color: #ccc;
+}
+
+
+@media (min-width: 768px) {
+  .header-navbar {
+    height: 85px;
+  }
+
+  .close-button {
+    display: none;
+  }
+
+  .header-homebutton {
+    width: 200px;
+  }
+
+  .nav-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .signinsignup-button-header {
+    padding: 10px 20px;
+    height: 100%;
+  }
+
+  .header-homebutton a {
+    font-size: 20px;
+  }
+
+  .navbar-homebutton {
+    display: none;
+  }
+
+  .menu-button {
+    display: none;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+    padding-top: 0;
+    transition: none;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .sidebar ul {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .sidebar ul li {
+    margin: 0 10px;
+    width: 140px;
+    text-align: justify;
+  }
+
+  .sidebar ul li a {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .sidebar ul li a:hover {
+    color: red;
+  }
+
+  .overlay {
+    display: none;
+  }
+}

@@ -1,0 +1,90 @@
+.upload-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.dropdowns label,
+.upload-form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.image-previews img {
+  margin-right: 8px;
+  margin-top: 8px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.upload-image .input-field[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #007bff;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.custom-file-upload:active {
+  background-color: #003d80;
+}
+
+.image-preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.image-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.delete-button {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 16px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
