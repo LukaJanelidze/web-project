@@ -1,9 +1,9 @@
 footer {
-    background: #222;
+    background: #262A18;
     color: white;
     padding: 20px 0;
     text-align: center;
-    height: 550px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -37,10 +37,10 @@ footer {
 
   .footer-links-container-button{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     cursor: pointer;
     padding: 12px;
-    background: #333;
+    background: #262A18;
     color: white;
     border-radius: 5px;
   }

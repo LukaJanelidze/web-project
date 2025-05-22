@@ -86,7 +86,7 @@ export const productsData: Product[] = [
     id: '6',
     name: 'samajuri',
     price: 2100,
-    location: 'ბათუმი',
+    location: 'თბილისი',
     category: 'აქსესუარი',
     categoryImg: '/public/images/category-images/აქსესუარი.jpg',
     subCategory: 'სამაჯურები',

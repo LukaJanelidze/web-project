@@ -4,11 +4,14 @@
   padding: 12px;
   font-size: 16px;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  background-color: #f5f5f5;
+  border: 1px solid #d4d4d4;
+  background-color: white;
   box-sizing: border-box;
-  color: #333;
   font-family: 'Arial', sans-serif;
+}
+
+.main-search-bar::placeholder {
+  color: #262A18;
 }
 
 /* Search overlay */
@@ -18,7 +21,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: #dfddd1f1;
   z-index: 9999;
   display: flex;
   flex-direction: column;
@@ -35,19 +38,28 @@
   margin-bottom: 20px;
 }
 
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .back-button {
-  background: none;
   border: none;
-  font-size: 24px;
+  margin-top: 0 !important;
+  font-size: 25px !important;
+  padding-top: 12px !important;
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  color: #777;
-  margin-right: 12px;
+  color: white !important;
+  background-color: #262A18 !important;
 }
 
 .search-title {
   font-size: 20px;
   font-weight: 600;
-  color: #444;
+  color: #262A18;
 }
 
 /* Search input wrapper */
@@ -65,6 +77,12 @@
   background-color: #ffffff;
   box-sizing: border-box;
   color: #333;
+}
+
+.search-input-wrapper select:focus,
+.search-input-wrapper input:focus {
+  border-color: #3498db;
+  outline: none;
 }
 
 .clear-button {
@@ -145,18 +163,13 @@
 }
 
 .submit-button {
-  background-color: #3498db;
+  background-color: #262A18;
   color: white;
 }
 
 .filter-button {
-  background-color: #2ecc71;
+  background-color: #713519;
   color: white;
-}
-
-.filter-button:hover,
-.submit-button:hover {
-  background-color: #2980b9;
 }
 
 /* Filter overlay */
@@ -191,12 +204,14 @@
 }
 
 .filter-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .filter-group label {
   font-weight: 600;
-  margin-bottom: 10px;
   font-size: 14px;
   color: #555;
 }
@@ -256,13 +271,9 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
-  background-color: #3498db;
+  background-color: #262A18;
   color: white;
   border-radius: 8px;
-}
-
-.apply-button:hover {
-  background-color: #2980b9;
 }
 
 /* City Dropdown Style */
@@ -272,13 +283,16 @@
   border-radius: 8px;
   border: 1px solid #dcdcdc;
   background-color: #f9f9f9;
-  color: #333;
+  color: black;
   box-sizing: border-box;
+  -webkit-appearance: none; /* Safari/older iOS */
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .filter-group select option {
   padding: 12px;
   font-size: 14px;
   background-color: #f9f9f9;
-  color: #333;
+  color: black;
 }

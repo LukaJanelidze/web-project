@@ -67,10 +67,10 @@ const HeaderNavbar: React.FC = () => {
         <div className='nav-content'>
           <ul>
             <li className='navbar-homebutton'><Link to="/" onClick={() => setIsOpen(false)}>მთავარი</Link></li>
-            <li><Link to="/about" onClick={() => setIsOpen(false)}>ჩვენს შესახებ</Link></li>
-            <li><Link to="/services" onClick={() => setIsOpen(false)}>სერვისები</Link></li>
-            <li><Link to="/contact" onClick={() => setIsOpen(false)}>კონტაქტი</Link></li>
             <li><Link to="/profile" onClick={() => setIsOpen(false)}>პროფილი</Link></li>
+            <li><Link to="/about" onClick={() => setIsOpen(false)}>ჩვენს შესახებ</Link></li>
+            <li><Link to="/contact" onClick={() => setIsOpen(false)}>კონტაქტი</Link></li>
+
           </ul>
           <Link to="/signinsignup" onClick={() => setIsOpen(false)} className='signinsignup-button-header'>შესვლა</Link>
         </div>

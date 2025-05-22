@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #222;
+  background-color: #262A18;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
   right: -250px;
   width: 250px;
   height: 100%;
-  background-color: #333;
+  background-color: #262A18;
   padding-top: 10px;
   transition: right 0.3s ease-in-out;
   display: flex;
@@ -57,7 +57,7 @@
 .close-button {
   background: none;
   border: none;
-  color: red;
+  color: white;
   font-weight: 900;
   border-radius: 100%;
   font-size: 35px;
@@ -84,10 +84,12 @@
 .sidebar ul li a {
   text-decoration: none;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   display: block;
   transition: 0.3s;
-  width: 100%;
+  background-color: #454F2C;
+  padding: 5px;
+  border-radius: 8px;
 }
 
 .overlay {
@@ -106,6 +108,8 @@
   justify-content: space-between;
   height: 100%;
   padding: 10px;
+  width: 100%;
+  align-items: center;
 }
 
 .signinsignup-button-header {
@@ -113,10 +117,13 @@
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: #4caf4f3f;
+  background-color: #713519;
   text-decoration: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  width: 150px;
+  font-size: 20px;
+  margin: 10px;
 }
 
 /* Add this near the bottom or logically near .menu-button */
@@ -144,11 +151,12 @@
   background: none;
   border: none;
   color: white;
-  font-size: 25px;
+  font-size: 28px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
 }
 
 .search-button:hover {

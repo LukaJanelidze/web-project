@@ -15,9 +15,8 @@ export default function Footer() {
       id: 1,
       links: [
         { name: "მთავარი", path: "/" },
-        { name: "ჩვენს შესახებ", path: "/about" },
-        { name: "სერვისები", path: "/services" },
-        { name: "კონტაქტი", path: "/contact" },
+        { name: "კატეგორიები", path: "/about" },
+        { name: "მაღაზიები", path: "/services" },
       ],
     },
   ];
@@ -36,7 +35,7 @@ export default function Footer() {
       
       <div className="footer-top">
         <div className="footer-top-box">
-          <h1 className="footer-top-title">საბითუმო</h1>
+          <h1 className="footer-top-title">ლოგო</h1>
           <hr className="footer-top-line" />
         </div>
       </div>
@@ -65,14 +64,14 @@ export default function Footer() {
 
             <div className="footer-items-container">
               <div className="footer-links-container-button">
-                <Link to="/" className="footer-links">რამე</Link>
+                <Link to="/" className="footer-links">კონტაქტი</Link>
               </div>
              <hr className="footer-sections-lines" />
             </div>
 
             <div className="footer-items-container">
               <div className="footer-links-container-button">
-                <Link to="/" className="footer-links">რამე</Link>
+                <Link to="/" className="footer-links">ჩვენს შესახებ</Link>
               </div>
              <hr className="footer-sections-lines" />
             </div>

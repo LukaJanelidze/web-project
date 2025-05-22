@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiArrowLeft, FiClock, FiSearch, FiX, FiFilter } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import './Search.css';
 
 const georgiaCities = [
-  'თბილისი', 'ბათუმი', 'ქუთაისი', 'ზუგდიდი', 'რუსთავი', 'სამტრედია', 'გორი', 'ახალქალაქი', 
+  'თბილისი', 'ბათუმი', 'ქუთაისი', 'ზუგდიდი', 'რუსთავი', 'სამტრედია', 'გორი', 'ახალქალაქი',
   'გურჯაანი', 'ტყიბული', 'ოზურგეთი', 'ხობი', 'ანაკლიე', 'ფოთი', 'სიღნაღი', 'გორი', 'წალკა',
   'ლაგოდეხი', 'თეთრიწყარო', 'ხაშური', 'კასპი', 'მცხეთა', 'ბორჯომი', 'ჩოხატაური', 'დუშეთი',
   'ბაკურიანი', 'ლენტეხი', 'სენაკი', 'ხიმში', 'ვანთი', 'შუმი'
@@ -27,6 +27,17 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
 
   const navigate = useNavigate();
 
+  // Load search history from localStorage on mount
+  useEffect(() => {
+    const stored = localStorage.getItem('searchHistory');
+    if (stored) setHistory(JSON.parse(stored));
+  }, []);
+
+  // Save history to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem('searchHistory', JSON.stringify(history));
+  }, [history]);
+
   const handleClose = () => {
     setIsActive(false);
     setSearchQuery('');
@@ -35,36 +46,38 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
   const handleClearQuery = () => setSearchQuery('');
 
   const handleSearch = () => {
-    // If no filters are applied, we proceed with normal search (just searchQuery)
-    if (isFilterVisible) {
-      // Advanced search (only if advanced filters are visible)
-      if (selectedCity || itemName || minPrice || maxPrice) {
-        const params = new URLSearchParams();
-        if (selectedCity) params.append('city', selectedCity);
-        if (itemName) params.append('item', itemName);
-        if (minPrice) params.append('minPrice', minPrice);
-        if (maxPrice) params.append('maxPrice', maxPrice);
+  const params = new URLSearchParams();
 
-        navigate(`/search?${params.toString()}`);
-      } else {
-        // If no advanced filters, just use search query
-        if (searchQuery.trim()) {
-          const params = new URLSearchParams();
-          params.append('query', searchQuery);
-          navigate(`/search?${params.toString()}`);
-        }
-      }
-    } else {
-      // Normal search (just using searchQuery)
-      if (searchQuery.trim()) {
-        const params = new URLSearchParams();
-        params.append('query', searchQuery);
-        navigate(`/search?${params.toString()}`);
-      }
+  const isAdvancedSearch = isFilterVisible;
+
+  if (isAdvancedSearch) {
+    if (selectedCity) params.append('city', selectedCity);
+    if (itemName) params.append('item', itemName);
+    if (minPrice) params.append('minPrice', minPrice);
+    if (maxPrice) params.append('maxPrice', maxPrice);
+  }
+
+  // Only include main searchQuery if not in advanced search
+  if (!isAdvancedSearch && searchQuery.trim()) {
+    params.append('query', searchQuery);
+  }
+
+  if (params.toString()) {
+    navigate(`/search?${params.toString()}`);
+
+    if (!isAdvancedSearch && searchQuery.trim()) {
+      setHistory((prev) => {
+        const newHistory = [searchQuery, ...prev.filter((h) => h !== searchQuery)];
+        return newHistory.slice(0, 10);
+      });
     }
+
     setIsActive(false);
     setSearchQuery('');
-  };
+    setIsFilterVisible(false);
+  }
+};
+
 
   const handleRemoveHistoryItem = (item: string) => {
     setHistory((prev) => prev.filter((h) => h !== item));
@@ -73,7 +86,6 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
   const handleFilterToggle = () => {
     setIsFilterVisible(!isFilterVisible);
 
-    // If we switch to the advanced filter view, clear any existing advanced search values
     if (!isFilterVisible) {
       setSelectedCity('');
       setItemName('');
@@ -90,14 +102,14 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
             <button className="back-button" onClick={handleClose}>
               <FiArrowLeft />
             </button>
-            <span className="search-title">ძებნა საიტზე</span>
+            <span className="search-title">საიტზე ძებნა</span>
           </div>
 
           <div className="search-input-wrapper">
             <input
               ref={inputRef}
               type="text"
-              placeholder="საძიებო სიტყვა"
+              placeholder="რას ეძებთ?"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="search-full-input"
@@ -162,7 +174,11 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
             {/* City Filter */}
             <div className="filter-group">
               <label htmlFor="city">ქალაქი</label>
-              <select id="city" value={selectedCity} onChange={(e) => setSelectedCity(e.target.value)}>
+              <select
+                id="city"
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+              >
                 <option value="">აირჩიეთ ქალაქი</option>
                 {georgiaCities.map((city, idx) => (
                   <option key={idx} value={city}>
@@ -193,7 +209,9 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
           </div>
 
           <div className="filter-footer">
-            <button className="apply-button" onClick={handleSearch}>გამოყენება</button>
+            <button className="apply-button" onClick={handleSearch}>
+              გამოყენება
+            </button>
           </div>
         </div>
       )}
