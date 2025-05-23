@@ -27,6 +27,13 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (isActive && inputRef.current && isMobile) {
+    inputRef.current.focus();
+  }
+}, [isActive, inputRef]);
+
   // Load search history from localStorage on mount
   useEffect(() => {
     const stored = localStorage.getItem('searchHistory');
@@ -99,7 +106,7 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
       {isActive && (
         <div className="search-overlay">
           <div className="search-header">
-            <button className="back-button" onClick={handleClose}>
+            <button className="search-header-back-button" onClick={handleClose}>
               <FiArrowLeft />
             </button>
             <span className="search-title">საიტზე ძებნა</span>
@@ -152,7 +159,7 @@ const Search: React.FC<SearchProps> = ({ isActive, setIsActive, inputRef }) => {
       {isFilterVisible && (
         <div className="filter-overlay">
           <div className="filter-header">
-            <button className="back-button" onClick={handleFilterToggle}>
+            <button className="search-header-back-button" onClick={handleFilterToggle}>
               <FiArrowLeft />
             </button>
             <h2>ფილტრები</h2>

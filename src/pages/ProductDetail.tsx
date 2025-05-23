@@ -20,7 +20,7 @@ const ProductDetail: React.FC = () => {
         <h1 className="product-detail-title">{product.name}</h1>
         <p className="product-detail-price">ფასი: {product.price} ₾</p>
         <p className="product-detail-location">ადგილმდებარეობა: {product.location}</p>
-        <Link to="/" className="back-button">← დაბრუნება</Link>
+        <Link to="/" className="product-back-button">← დაბრუნება</Link>
       </div>
     </div>
   );
